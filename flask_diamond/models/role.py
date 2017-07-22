@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from flask.ext.security import RoleMixin
-from .. import db
-from .. import ma
+from flask_security import RoleMixin
+from ..facets.database import db
+from ..facets.marshalling import ma
 from ..mixins.crud import CRUDMixin
 from ..mixins.marshmallow import MarshmallowMixin
 
@@ -47,6 +47,6 @@ class Role(db.Model, RoleMixin, CRUDMixin, MarshmallowMixin):
         from .. import security
 
         # make roles
-        security.Security.user_datastore.find_or_create_role("Admin")
-        security.Security.user_datastore.find_or_create_role("User")
+        security.user_datastore.find_or_create_role("Admin")
+        security.user_datastore.find_or_create_role("User")
         db.session.commit()

@@ -1,6 +1,2 @@
-recursive-include flask_diamond/views *
-recursive-include skels *
-include Readme.rst
-include requirements.txt
-include flask_diamond/migrations/alembic.ini
-include flask_diamond/migrations/script.py.mako
+graft flask_diamond
+include *.cfg *.rst *.in *.txt *.ini *.mako *.html *.js *.css *.jpg *.gif

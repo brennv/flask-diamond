@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-# Ian Dennis Miller
+# Flask-Diamond (c) Ian Dennis Miller
 
 import flask
-from .ext import *
+from .facets import *
 
 try:
     from flask import _app_ctx_stack as stack
@@ -45,7 +45,7 @@ class Diamond:
         else:
             self.app.teardown_request(self.teardown)
 
-    def bootup(self, extension_name, **kwargs):
+    def facet(self, extension_name, *args, **kwargs):
         """
         initialize an extension
         """
@@ -58,15 +58,15 @@ class Diamond:
 
         try:
             # try to explicitly pass self as the first parameter
-            result = method_to_call(self, **kwargs)
+            result = method_to_call(self, *args, **kwargs)
         except TypeError:
             # just call it because it will be wrapped to inject self
-            result = method_to_call(**kwargs)
+            result = method_to_call(*args, **kwargs)
 
-        self.app.logger.debug("bootup {0}".format(extension_name))
+        self.app.logger.debug("facet {0}".format(extension_name))
         return result
 
-    def super(self, extension_name, **kwargs):
+    def super(self, extension_name, *args, **kwargs):
         """
         invoke the initialization method for the superclass
 
@@ -76,7 +76,7 @@ class Diamond:
         init_method = "init_{0}".format(extension_name)
         # ensure the global version is called
         method_to_call = globals()[init_method]
-        result = method_to_call(self, **kwargs)
+        result = method_to_call(self, *args, **kwargs)
         return result
 
     def teardown(self, exception):
@@ -91,18 +91,6 @@ class Diamond:
             pass
             # ctx.sqlite3_db.close()
 
-    def init_accounts(self):
-        "initialize accounts with the User and Role classes imported from .models"
-        from .models.user import User
-        from .models.role import Role
-        self.super("accounts", user=User, role=Role)
-
-    def init_administration(self):
-        "Initialize admin interface"
-        from .models.user import User
-        from .models.role import Role
-        self.super("administration", user=User, role=Role)
-
     @property
     def _app(self):
         ctx = stack.top
@@ -110,27 +98,3 @@ class Diamond:
             if not hasattr(ctx, 'app'):
                 pass
             return ctx.app
-
-
-def create_app():
-    global application
-    if not application:
-        application = Diamond()
-        application.bootup("configuration")
-        application.bootup("logs")
-        application.bootup("database")
-        application.bootup("marshalling")
-        application.bootup("accounts")
-        application.bootup("blueprints")
-        application.bootup("signals")
-        application.bootup("forms")
-        application.bootup("error_handlers")
-        application.bootup("request_handlers")
-        application.bootup("administration")
-        # application.bootup("rest")
-        # application.bootup("webassets")
-        # application.bootup("email")
-        # application.bootup("debugger")
-        # application.bootup("task_queue")
-
-    return application.app

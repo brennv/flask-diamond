@@ -1,90 +1,92 @@
 .. include:: ../Readme.rst
 
-Introduction
-------------
+Get Started
+-----------
+
+**Start here**.  These introductory readings will teach you how to install Flask-Diamond and how to read the rest of the Flask-Diamond documentation.
 
 .. toctree::
     :maxdepth: 1
 
-    introduction/quick_start
-    introduction/learn_flask_diamond
-    introduction/system_requirements
+    quick-start
+    learn
+    system-requirements
 
-.. _basics:
+.. -basics:
 
 Basics
 ------
 
-The basics: how to start a new project and the first steps for making a Flask-Diamond application.
+Learn how to create a new project.  This section introduces the Flask-Diamond philosophy and the first steps for making an application.
 
 .. toctree::
     :maxdepth: 1
 
-    basics/project_initialization_and_scaffolding
-    basics/writing_an_application_with_flask-diamond
-    basics/diagram_of_a_scaffold
+    tutorial-planets
+    scaffolding
+    scaffold-diagram
+    writing-an-application
+    philosophy
 
-.. _developer-guide:
+Developers Guide
+----------------
 
-Developer Guide
----------------
-
-Once you have a project to work with, more advanced topics are discussed in the Developer Guide.  These topics are for developers who are writing or maintaining Flask-Diamond applications.
-
-.. toctree::
-    :maxdepth: 1
-
-    developer/model_view_controller_with_flask-diamond
-    developer/writing_models_with_sqlalchemy
-    developer/writing_views_with_jinja_and_blueprints
-    developer/writing_an_api_with_flask-restful
-    developer/writing_a_gui_with_flask-admin
-    developer/crud_with_flask-diamond
-    developer/managing_schemas_with_flask-migrate
-    developer/writing_documentation_with_sphinx
-    developer/sending_email_with_flask-mail
-    developer/testing_with_nosetests
-    developer/managing_users_with_flask-security
-    developer/debugging_a_flask-diamond_application
-
-.. _user-guide:
-
-User Guide
-----------
-
-The User Guide topics are for managing and installing a Flask-Diamond application.  In particular, IT Ops and Deployment Engineers will benefit from this section.
+Learn common development patterns.
 
 .. toctree::
     :maxdepth: 1
 
-    user/requirements_management_with_virtualenv
-    user/configuration_explanation
-    user/Makefile_explanation
-    user/manage_py_explanation
-    user/web_service_with_wsgi
-    user/deploying_with_fabric
+    model-view-controller
+    crud
+    schemas-and-migrations
+    documentation
+    testing
+    libraries-included
+    libraries-diagram
 
 .. Tutorials
 .. ---------
 ..
 .. .. toctree::
 ..
-..  tutorial/model-view-controller_architecture_with_flask-diamond
-..    developer/designing_a_flask-diamond_application
+..  tutorial/model-view-controller-architecture-with-flask-diamond
+..    developer/designing-a-flask-diamond-application
 
-About Flask-Diamond
--------------------
+.. -developer-guide:
+
+Facets Guide
+------------
+
+This section describes the facets of Flask-Diamond.
 
 .. toctree::
     :maxdepth: 1
 
-    about/libraries_included_in_flask-diamond
-    about/diagram_of_libraries
-    about/how_to_contribute_to_the_project
-    about/philosophy
-    about/changes
-    license
-..    about/contributors
+    facets
+    accounts
+    administration
+    blueprints
+    models
+    debugging
+    email
+    rest
+
+.. -user-guide:
+
+Operation Guide
+---------------
+
+The User Guide topics are for managing and installing a Flask-Diamond application.  In particular, IT Ops and Deployment Engineers will benefit from this section.
+
+.. toctree::
+    :maxdepth: 1
+
+    requirements
+    configuration
+    makefile
+    manage-py
+    wsgi
+    deploying
 
 API Reference
 -------------
@@ -93,3 +95,22 @@ API Reference
     :maxdepth: 3
 
     api
+
+Open Source Software
+--------------------
+
+.. toctree::
+    :maxdepth: 1
+
+    helping
+    contributors
+    license
+    changelog
+
+Online Resources
+----------------
+
+- `GitHub Project Page <http://github.com/diamond-org/flask-diamond>`_
+- `Issue Tracker <http://github.com/diamond-org/flask-diamond/issues>`_
+- `Python Project on PyPI <http://pypi.python.org/pypi/Flask-Diamond>`_
+- `Diamond Methods <http://diamond-methods.org/>`_
